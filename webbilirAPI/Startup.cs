@@ -27,6 +27,8 @@ namespace webbilirAPI
         {
             services.AddDbContext<StudentContext>
                 (opt => opt.UseSqlServer(Configuration["Data:StudentAPIConnection:ConnectionString"]));
+            services.AddDbContext<ClassContext>
+                (opt => opt.UseSqlServer(Configuration["Data:StudentAPIConnection:ConnectionString"]));
             //Initializing/settingup our service
             services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
