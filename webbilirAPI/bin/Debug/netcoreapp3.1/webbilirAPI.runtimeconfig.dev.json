@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/home/noor/.dotnet/store/|arch|/|tfm|",
-      "/home/noor/.nuget/packages"
+      "C:\\Users\\noora\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\noora\\.nuget\\packages"
     ]
   }
 }
