@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using webbilirAPI.Models;
 
 namespace webbilirAPI.Controllers
 {
@@ -9,11 +10,19 @@ namespace webbilirAPI.Controllers
     [ApiController]
     public class StudentsController : ControllerBase
     {
+        //We create an instance of our DB context class and inititlize it using constructer dependency injection in the second method.
+        private readonly StudentContext _context;
+
+        public StudentsController(StudentContext context) => _context = context;
         //This Action method expects to be accessed using an http get request
+        //GET:          api/students
         [HttpGet]
-        public ActionResult<IEnumerable<string>> GetString()
+        public ActionResult<IEnumerable<Student>> GetStudents()
         {
-            return new string[] {"hello", "world", "!"};
+            return _context.StudentItems;
         }
+        
+        
+        
     }
 }
