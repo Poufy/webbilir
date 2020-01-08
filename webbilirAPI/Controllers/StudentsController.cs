@@ -21,6 +21,17 @@ namespace webbilirAPI.Controllers
         {
             return _context.StudentItems;
         }
+
+        //GET:          api/students/<id>
+        [HttpGet("{id}")]
+        public ActionResult<Student> GetStudent(int id)
+        {
+            var student = _context.StudentItems.Find(id);
+            if(student == null)
+                return NotFound();
+            return student;
+        }
+
         
         
         
