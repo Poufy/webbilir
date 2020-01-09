@@ -1,5 +1,6 @@
 # webbilir
-TODO:
+Possible improvements:
 
-	1- Setup the DB server and the connection string
-	2- Front end
+	1- Form Validation to prevent empty/invalid input
+	2- Check if the ID/name already exist
+	2- Better looking front-end

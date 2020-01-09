@@ -1,0 +1,81 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+
+    <form id="studentForm" action="http://localhost:3000/api/students" method="POST" >
+  <div class="form-group">
+    <label for="nameInput">Name</label>
+    <input type="text" name="name" class="form-control" id="nameInput" aria-describedby="emailHelp" placeholder="Enter Name">
+    <small class="form-text text-muted">Please enter your student name.</small>
+  </div>
+  <div class="form-group">
+    <label for="studentIdInput">Student ID</label>
+    <input type="text" name="studentID" class="form-control" id="studentIdInput" placeholder="ID">
+    <small class="form-text text-muted">Please enter your ID</small>
+
+  </div>
+  <div class="form-group">
+    <label for="classSelect">Class ID</label>
+    <input type="text" name="classId" class="form-control" id="classSelect" placeholder="ID">
+    <small class="form-text text-muted">Please enter your classId</small>
+
+  </div>
+
+   @* <div class="form-group">
+    <label for="classSelect">Class</label>
+    <select name="classId" class="form-control" id="classSelect">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div> *@
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+ <script>
+ const nameInput = document.getElementById("nameInput");
+const studentIDInput = document.getElementById("studentIdInput");
+const classIdInput = document.getElementById("classSelect");
+const form = document.getElementById("studentForm");
+var formData = JSON.stringify($("#studentForm").serializeArray());
+
+
+
+   form.addEventListener("submit", e => {
+     e.preventDefault();
+     /*
+    //console.log(name.value);
+    //console.log(studentID.value);
+    //console.log(classId.value);
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+    */
+
+    $.ajax({
+  type: "POST",
+  url: "localhost:3000/api/students",
+  data: {
+    name: nameInput.value,
+    studentID: studentIDInput.value,
+    classId: classIdInput.value
+  },
+  success: function(){ alert("done")},
+  dataType: "json",
+  contentType : "application/json"
+});
+         
+}); 
+</script> 
